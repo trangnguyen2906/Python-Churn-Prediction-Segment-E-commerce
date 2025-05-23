@@ -1,5 +1,4 @@
 # 📊 Project Title: RFM Analysis
----
 
 ## 📑 Table of Contents  
 1. [📌 Background & Overview](#-background--overview)  
