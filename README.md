@@ -1,4 +1,4 @@
-# 📊 Project Title: RFM Analysis
+# 📊 Predict & Segment E-commerce Churned Users Using Python & Machine Learning
 
 ## 📑 Table of Contents  
 1. [📌 Background & Overview](#-background--overview)  
