@@ -183,20 +183,45 @@ for col in bool_cols:
 <img src="https://drive.google.com/uc?export=view&id=1Gkf6AojbrJXr4RDQ0fx6YAs4HUu6yQVq" />
 
 ## 3️⃣ Churn Prediction – Supervised Learning
+This section focuses on building classification models to predict whether a user is likely to churn.
 
 ### 🔹 Split Dataset: Divide the data into training and test sets
+Divided the dataset into training (70%), validation (15%), and test (15%) sets using `train_test_split`.
 
 ### 🔹 Normalize Features: Scale numerical values for better model performance
+Applied `StandardScaler` to standardize features for better convergence and model performance.
 
 ### 🔸 Models Training:
 
 #### **🤖 Logistic Regression**
+ - Tuned using GridSearchCV with `penalty`, `C`, and `solver`
+    - Best cross-validation accuracy: **~0.756**
+    - Test accuracy: **0.88**, Validation accuracy: **0.886**
+    - Precision (Class 1): **0.71**, Recall: **0.52**, F1-score: **0.60**
 
 #### **🧭 K-Nearest Neighbors (KNN)**
+- Explored multiple `k` values and visualized accuracy trend
+    - Best `k = 2` with test accuracy: **0.924**, validation accuracy: **0.936**
+    - Balanced precision/recall across classes
 
 #### **🌲 Random Forest**
+ - Tuned multiple hyperparameters: `n_estimators`, `max_depth`, `min_samples_leaf`, etc.
+    - Best test accuracy: **0.953**, validation accuracy: **0.963**
+    - F1-score (Class 1): **0.86**, Recall: **0.79**, Precision: **0.94**
+    - Most balanced performance among all models
+
+🔍 **Summary**
+
+| Model              | Test Accuracy | Val Accuracy | Precision (Churn) | Recall (Churn) | F1 (Churn) |
+|-------------------|---------------|--------------|-------------------|----------------|------------|
+| Logistic Regression | 0.88          | 0.886        | 0.71              | 0.52           | 0.60       |
+| KNN (k=2)          | 0.924         | 0.936        | 0.92              | 0.62           | 0.74       |
+| Random Forest      | **0.953**     | **0.963**    | **0.94**          | **0.79**       | **0.86**   |
+
+🌟 **Random Forest outperformed all other models** in both accuracy and class balance, and was chosen for churn prediction.
 
 ### 🔹Feature Importance (via Random Forest)
+
 
 ## 4️⃣ Churn Segmentation – Unsupervised Learning
 
