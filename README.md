@@ -126,6 +126,7 @@ for col in categorical_cols:
   Verified that there are **no duplicated rows** in the dataset using `df.duplicated().sum()`
 
 ```
+## Missing
 check_null = pd.DataFrame(df.isnull().sum().sort_values(ascending=False))
 check_null['%missing'] = check_null[0] / len(df) * 100
 check_null.columns = ['count', '%missing']
@@ -150,9 +151,11 @@ df.update(X_full_imputed[mean_cols + list(median_cols)])
 
 print(df.isnull().sum())
 
+## Duplicate
 duplicate = df.duplicated().sum()
 print(duplicate)
 ```
+<img src="https://drive.google.com/uc?export=view&id=1U1wGPULAzrJ1h-VaTH58bm2R6HSuQta5"/>
 
 ## 2️⃣ Churn Prediction – Supervised Learning
 
