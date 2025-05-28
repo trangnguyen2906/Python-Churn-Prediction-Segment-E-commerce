@@ -96,6 +96,24 @@ It focuses on answering three key business questions:
 - 🔹 **Standardize Categorical Labels**  
   - Cleaned inconsistent category labels (e.g., mapping `'phone'` → `'Mobile Phone'`, `'COD'` → `'Cash on Delivery'`)
 
+```
+numeric_cols = df.select_dtypes(include=['int64', 'float']).columns
+categorical_cols = df.select_dtypes(exclude=['int64', 'float']).columns
+print(numeric_cols)
+print(categorical_cols)
+
+for col in categorical_cols:
+    unique_vals = df[col].unique()
+    print(f'Column: {col}, Unique Values: {unique_vals}')
+
+df['PreferredLoginDevice'] = df['PreferredLoginDevice'].replace({'Phone': 'Mobile Phone'})
+df['PreferredPaymentMode'] = df['PreferredPaymentMode'].replace({'COD': 'Cash on Delivery','CC': 'Credit Card'})
+df['PreferedOrderCat'] = df['PreferedOrderCat'].replace({'Mobile': 'Mobile Phone'})
+for col in categorical_cols:
+    unique_vals = df[col].unique()
+    print(f'Column: {col}, Unique Values: {unique_vals}')
+```
+
 - 🔹 **Check for Missing Values**  
   - Calculated missing counts and percentages  
   - Found several columns (e.g., `DaySinceLastOrder`, `Tenure`, `CouponUsed`) with missing data  
