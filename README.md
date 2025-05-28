@@ -20,15 +20,17 @@ A e-commerce company is facing a business challenge: user churn. Many customers 
 
 ### 📖 What is this project about? What Business Question will it solve?
 
-This project uses **Machine Learning** to help an e-commerce company proactively tackle customer churn and design better promotion strategies. It focuses on answering three key business questions:
+This project uses **Machine Learning** to help an e-commerce company proactively tackle customer churn and design better promotion strategies. 
 
-📊 What are the patterns and behaviors of churned users?
+It focuses on answering three key business questions:
+
+- 📊 What are the patterns and behaviors of churned users?
 → Understand why users churn and suggest actionable retention strategies
 
-🔍 Which users are likely to churn?
+- 🔍 Which users are likely to churn?
 → Build and fine-tune supervised ML models to predict churn risk
 
-🧩 How can we group churned users for targeted promotions? What are the differences between
+- 🧩 How can we group churned users for targeted promotions? What are the differences between
 groups?
 → Apply unsupervised ML (clustering) to segment churned users by behavior and value 
  
