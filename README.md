@@ -9,21 +9,30 @@
 
 ## 📌 Background & Overview  
 
+### 🧩 Project Context:
+A e-commerce company is facing a business challenge: user churn. Many customers stop interacting with the platform after a short period, resulting in lost revenue and reduced customer lifetime value. However, the company currently lacks a systematic, data-driven approach to understand: 
+
+- Why users churn
+- How to predict churn in advance
+- How to re-engage churned users effectively
+
 ### Objective:
+
 ### 📖 What is this project about? What Business Question will it solve?
 
-Clearly outline what this project does, what business questions the project will solve. 
+This project uses **Machine Learning** to help an e-commerce company proactively tackle customer churn and design better promotion strategies. It focuses on answering three key business questions:
 
-- Provide a brief introduction - Write in bullet point format
-- Point out the main business question
+📊 What are the patterns and behaviors of churned users?
+→ Understand why users churn and suggest actionable retention strategies
 
+🔍 Which users are likely to churn?
+→ Build and fine-tune supervised ML models to predict churn risk
 
- _Example:_
-  This project uses Python to analyze transaction data from KPMG to:
-
-✔️ Identify the behavior in customer's first transaction.  
-✔️ Provide actionable insights to increase retention rate   
+🧩 How can we group churned users for targeted promotions? What are the differences between
+groups?
+→ Apply unsupervised ML (clustering) to segment churned users by behavior and value 
  
+🎯 The goal is to support data-driven decision-making in user retention, promotion targeting, and customer lifecycle management.
 
 
 ### 👤 Who is this project for?  
