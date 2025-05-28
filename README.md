@@ -85,6 +85,26 @@ It focuses on answering three key business questions:
 ## ⚒️ Main Process
 
 ## 1️⃣ Data Cleaning & Preprocessing
+- 🔹 **Load Dataset**  
+  Imported dataset (`churn_prediction.csv`) and previewed the first few rows using `df.head()` to verify structure.
+
+- 🔹 **Check Data Types & Values**  
+  - Separated numerical and categorical columns using `df.select_dtypes()`
+  - Inspected overall structure with `df.info()` and summary statistics using `df.describe()`
+  - Checked unique values in each categorical column for understanding data distribution
+
+- 🔹 **Standardize Categorical Labels**  
+  - Cleaned inconsistent category labels (e.g., mapping `'phone'` → `'Mobile Phone'`, `'COD'` → `'Cash on Delivery'`)
+
+- 🔹 **Check for Missing Values**  
+  - Calculated missing counts and percentages  
+  - Found several columns (e.g., `DaySinceLastOrder`, `Tenure`, `CouponUsed`) with missing data  
+  - Handled missing values:
+    - Used **mean** imputation for `HourSpendOnApp`  
+    - Used **median** imputation for other numerical columns with missing values
+
+- 🔹 **Check for Duplicates**  
+  Verified that there are **no duplicated rows** in the dataset using `df.duplicated().sum()`
 
 ## 2️⃣ Churn Prediction – Supervised Learning
 
