@@ -94,11 +94,11 @@ It focuses on answering three key business questions:
 
 ### 🔸 Models Training:
 
-**🤖 Logistic Regression**
+#### **🤖 Logistic Regression**
 
-**🧭 K-Nearest Neighbors (KNN)**
+#### **🧭 K-Nearest Neighbors (KNN)**
 
-**🌲 Random Forest**
+#### **🌲 Random Forest**
 
 ### 🔹Feature Importance (via Random Forest)
 
