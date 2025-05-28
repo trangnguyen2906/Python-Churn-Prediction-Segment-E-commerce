@@ -46,36 +46,38 @@ It focuses on answering three key business questions:
 ## 📂 Dataset Description & Data Structure  
 
 ### 📌 Data Source  
-- Source: (Mention where the dataset is obtained from—Kaggle, company database, government sources, etc.)  
-- Size: (Mention the number of rows & columns)  
-- Format: (.csv, .sql, .xlsx, etc.)  
-
+- Source: Internal company dataset provided
+- Size: 5,630 rows × 20 columns 
+- Format: `.csv` 
 ### 📊 Data Structure & Relationships  
 
 #### 1️⃣ Tables Used:  
-Mention how many tables are in the dataset.  
+- The dataset contains one main table: `churn_prediction.csv`
 
-#### 2️⃣ Table Schema & Data Snapshot  
+#### 2️⃣ Table Schema 
 
-Table 1: Products Table  
-
-👉🏻 Insert a screenshot of table schema 
-
-📌If the table is too big, only capture a part of it that contains key metrics you used in the projects or put the table in toggle
-
- _Example:_
-
-| Column Name | Data Type | Description |  
-|-------------|----------|-------------|  
-| Product_ID  | INT      | Unique identifier for each product |  
-| Name        | TEXT     | Product name |  
-| Category    | TEXT     | Product category |  
-| Price       | FLOAT    | Price per unit |  
-
-
-Table 2: Sales Transactions  
-
-👉🏻 Insert a screenshot of table schema.
+| Column Name                | Description                                                   |
+|----------------------------|---------------------------------------------------------------|
+| `CustomerID`              | Unique customer ID                                            |
+| `Churn`                   | Target variable: churn flag (1 = churned, 0 = retained)       |
+| `Tenure`                  | Duration (in months) the customer has used the platform       |
+| `PreferredLoginDevice`    | Most frequently used device to access the platform            |
+| `CityTier`                | City classification (1, 2, 3) indicating customer location     |
+| `WarehouseToHome`         | Distance between customer’s home and warehouse                |
+| `PreferPaymentMethod`     | Customer’s preferred payment method                           |
+| `Gender`                  | Gender of the customer                                        |
+| `HourSpendOnApp`          | Total hours spent on the app or website                       |
+| `NumberOfDeviceRegistered`| Number of devices registered to this customer                 |
+| `PreferredOrderCat`       | Category most often ordered in the last month                 |
+| `SatisfactionScore`       | Satisfaction rating from the customer                         |
+| `MaritalStatus`           | Marital status of the customer                                |
+| `NumberOfAddress`         | Number of saved addresses by customer                         |
+| `Complain`                | Whether any complaint was raised in the last month            |
+| `OrderAmountHikeFromLastYear` | % increase in order amount vs. last year                   |
+| `CouponUsed`              | Number of coupons used in the last month                      |
+| `OrderCount`              | Number of orders placed in the last month                     |
+| `DaySinceLastOrder`       | Days since last order was placed                              |
+| `CashbackAmount`          | Average cashback received in the last month  
 
 
 ---
