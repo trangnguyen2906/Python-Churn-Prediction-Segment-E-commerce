@@ -113,7 +113,7 @@ for col in categorical_cols:
     unique_vals = df[col].unique()
     print(f'Column: {col}, Unique Values: {unique_vals}')
 ```
-<img src="https://drive.google.com/uc?export=view&id=17Jd7X3lE7M3mWC9-czqchDk5uDjV0mfE" width="700"/>
+<img src="https://drive.google.com/uc?export=view&id=17Jd7X3lE7M3mWC9-czqchDk5uDjV0mfE"/>
 
 - 🔹 **Check for Missing Values**  
   - Calculated missing counts and percentages  
