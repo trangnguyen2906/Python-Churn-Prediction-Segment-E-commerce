@@ -125,6 +125,35 @@ for col in categorical_cols:
 - 🔹 **Check for Duplicates**  
   Verified that there are **no duplicated rows** in the dataset using `df.duplicated().sum()`
 
+```
+check_null = pd.DataFrame(df.isnull().sum().sort_values(ascending=False))
+check_null['%missing'] = check_null[0] / len(df) * 100
+check_null.columns = ['count', '%missing']
+print(check_null)
+
+X = df.drop(columns=['Churn'])
+y = df['Churn']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+mean_cols = ['HourSpendOnApp']
+median_cols = df.columns[df.isna().sum()>0].drop('HourSpendOnApp')
+
+imp_mean = SimpleImputer(strategy='mean')
+X_train[mean_cols] = imp_mean.fit_transform(X_train[mean_cols])
+X_test[mean_cols] = imp_mean.transform(X_test[mean_cols])
+
+imp_median = SimpleImputer(strategy='median')
+X_train[median_cols] = imp_median.fit_transform(X_train[median_cols])
+X_test[median_cols] = imp_median.transform(X_test[median_cols])
+X_full_imputed = pd.concat([X_train, X_test]).sort_index()
+df.update(X_full_imputed[mean_cols + list(median_cols)])
+
+print(df.isnull().sum())
+
+duplicate = df.duplicated().sum()
+print(duplicate)
+```
+
 ## 2️⃣ Churn Prediction – Supervised Learning
 
 ### 🔹 Split Dataset: Divide the data into training and test sets
