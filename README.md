@@ -84,17 +84,32 @@ It focuses on answering three key business questions:
 
 ## ⚒️ Main Process
 
-1️⃣ Data Cleaning & Preprocessing  
-2️⃣ Exploratory Data Analysis (EDA)  
-3️⃣ SQL/ Python Analysis 
+### 1️⃣ Data Cleaning & Preprocessing
 
-- First, explain codes' purpose - what they do
+### 2️⃣ Churn Prediction – Supervised Learning
 
-- Then how your query/ code & Insert screenshots of your result
+#### 🔹 Split Dataset: Divide the data into training and test sets
 
-- Finally, explain your observations/ findings from the results  ts findings
-  
- _Describe trends, key metrics, and patterns._  
+#### 🔹 Normalize Features: Scale numerical values for better model performance
+
+#### 🔸 Models Training:
+
+**🤖 Logistic Regression**
+
+**🧭 K-Nearest Neighbors (KNN)**
+
+**🌲 Random Forest**
+
+#### 🔹Feature Importance (via Random Forest)
+
+### 3️⃣ Churn Segmentation – Unsupervised Learning
+
+#### 🔹 Dimension Reduction: Reduce features for efficient clustering
+
+#### 🔸 K-Means Clustering
+
+#### 🔹 Cluster Analysis:
+
 
 ---
 
