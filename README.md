@@ -84,7 +84,7 @@ It focuses on answering three key business questions:
 
 ## ⚒️ Main Process
 
-## 1️⃣ Data Cleaning & Preprocessing
+## 1️⃣ Data Cleaning
 - 🔹 **Load Dataset**  
   Imported dataset (`churn_prediction.csv`) and previewed the first few rows using `df.head()` to verify structure.
 
@@ -157,7 +157,9 @@ print(duplicate)
 ```
 <img src="https://drive.google.com/uc?export=view&id=1U1wGPULAzrJ1h-VaTH58bm2R6HSuQta5"/>
 
-## 2️⃣ Churn Prediction – Supervised Learning
+## 2️⃣ Data Preprocessing
+
+## 3️⃣ Churn Prediction – Supervised Learning
 
 ### 🔹 Split Dataset: Divide the data into training and test sets
 
@@ -173,7 +175,7 @@ print(duplicate)
 
 ### 🔹Feature Importance (via Random Forest)
 
-## 3️⃣ Churn Segmentation – Unsupervised Learning
+## 4️⃣ Churn Segmentation – Unsupervised Learning
 
 ### 🔹 Dimension Reduction: Reduce features for efficient clustering
 
