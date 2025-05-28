@@ -24,29 +24,22 @@ This project uses **Machine Learning** to help an e-commerce company proactively
 
 It focuses on answering three key business questions:
 
-- 📊 What are the patterns and behaviors of churned users?
+- 📊 What are the **patterns and behaviors of churned users?**
 → Understand why users churn and suggest actionable retention strategies
 
-- 🔍 Which users are likely to churn?
+- 🔍 Which **users** are **likely to churn**?
 → Build and fine-tune supervised ML models to predict churn risk
 
-- 🧩 How can we group churned users for targeted promotions? What are the differences between
-groups?
+- 🧩 How can we **group churned users** for targeted promotions? 
 → Apply unsupervised ML (clustering) to segment churned users by behavior and value 
  
-🎯 The goal is to support data-driven decision-making in user retention, promotion targeting, and customer lifecycle management.
+🎯 The goal is to support data-driven decision-making in **user retention, promotion targeting, and customer lifecycle management.**
 
 
 ### 👤 Who is this project for?  
-
-Mention who might benefit from this project 
-
- _Example:_
-
-✔️ Data analysts & business analysts  
-✔️ Decision-makers & stakeholders  
-
-
+- **Marketing Teams** – to target churned users with personalized campaigns
+- **Data Analysts** – to uncover churn patterns and build models
+- **Decision Makers** – to guide strategy and resource allocation
 
 ---
 
