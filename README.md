@@ -84,15 +84,15 @@ It focuses on answering three key business questions:
 
 ## ⚒️ Main Process
 
-### 1️⃣ Data Cleaning & Preprocessing
+## 1️⃣ Data Cleaning & Preprocessing
 
-### 2️⃣ Churn Prediction – Supervised Learning
+## 2️⃣ Churn Prediction – Supervised Learning
 
-#### 🔹 Split Dataset: Divide the data into training and test sets
+### 🔹 Split Dataset: Divide the data into training and test sets
 
-#### 🔹 Normalize Features: Scale numerical values for better model performance
+### 🔹 Normalize Features: Scale numerical values for better model performance
 
-#### 🔸 Models Training:
+### 🔸 Models Training:
 
 **🤖 Logistic Regression**
 
@@ -100,15 +100,15 @@ It focuses on answering three key business questions:
 
 **🌲 Random Forest**
 
-#### 🔹Feature Importance (via Random Forest)
+### 🔹Feature Importance (via Random Forest)
 
-### 3️⃣ Churn Segmentation – Unsupervised Learning
+## 3️⃣ Churn Segmentation – Unsupervised Learning
 
-#### 🔹 Dimension Reduction: Reduce features for efficient clustering
+### 🔹 Dimension Reduction: Reduce features for efficient clustering
 
-#### 🔸 K-Means Clustering
+### 🔸 K-Means Clustering
 
-#### 🔹 Cluster Analysis:
+### 🔹 Cluster Analysis:
 
 
 ---
