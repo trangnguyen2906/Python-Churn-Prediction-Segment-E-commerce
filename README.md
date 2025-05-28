@@ -159,6 +159,20 @@ print(duplicate)
 
 ## 2️⃣ Data Preprocessing
 
+- 🔹 **Encoding Categorical Variables**  
+  - `Gender`: Only 2 unique values → used **Label Encoding**  
+    ➤ This is more efficient than one-hot encoding and avoids creating unnecessary extra columns.
+  - Other categorical columns (`PreferredLoginDevice`, `PreferredPaymentMode`, etc.): used **One-Hot Encoding** with `drop_first=True` to avoid multicollinearity.
+
+- 🔹 **Convert Boolean Columns**  
+  - Converted `True/False` dummy variables to `0/1` integers for compatibility with ML algorithms.
+
+- 🔹 **Check Post-Encoding**  
+  - Verified that no missing values remained using `df_encoded.isnull().sum()`
+
+- 🔹 **Drop Unused Columns**  
+  - Removed `CustomerID` since it's only an identifier and not informative for modeling
+
 ## 3️⃣ Churn Prediction – Supervised Learning
 
 ### 🔹 Split Dataset: Divide the data into training and test sets
