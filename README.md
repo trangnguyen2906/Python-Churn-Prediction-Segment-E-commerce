@@ -120,7 +120,7 @@ for col in categorical_cols:
   - Found several columns (e.g., `DaySinceLastOrder`, `Tenure`, `CouponUsed`) with missing data  
   - Handled missing values:
     - Used **mean** imputation for `HourSpendOnApp`  
-    - Used **median** imputation for other numerical columns with missing values
+    - Used **median** imputation for other numerical columns with missing values:  `Tenure`, `CouponUsed`, `DaySinceLastOrder` are often **skewed** or **contain outliers**, so median is more robust and reduces distortion in such cases.
 
 - 🔹 **Check for Duplicates**  
   Verified that there are **no duplicated rows** in the dataset using `df.duplicated().sum()`
