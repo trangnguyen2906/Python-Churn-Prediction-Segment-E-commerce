@@ -60,7 +60,7 @@ It focuses on answering three key business questions:
 |----------------------------|---------------------------------------------------------------|
 | `CustomerID`              | Unique customer ID                                            |
 | `Churn`                   | Target variable: churn flag (1 = churned, 0 = retained)       |
-| `Tenure`                  | Duration (in months) the customer has used the platform       |
+| `Tenure`                  | Duration the customer has used the platform       |
 | `PreferredLoginDevice`    | Most frequently used device to access the platform            |
 | `CityTier`                | City classification (1, 2, 3) indicating customer location     |
 | `WarehouseToHome`         | Distance between customer’s home and warehouse                |
