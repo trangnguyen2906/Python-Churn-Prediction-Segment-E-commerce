@@ -159,10 +159,7 @@ print(duplicate)
 
 ## 2️⃣ Data Preprocessing
 
-- 🔹 **Encoding Categorical Variables**  
-  - `Gender`: Only 2 unique values → used **Label Encoding**  
-    ➤ This is more efficient than one-hot encoding and avoids creating unnecessary extra columns.
-  - Other categorical columns (`PreferredLoginDevice`, `PreferredPaymentMode`, etc.): used **One-Hot Encoding** with `drop_first=True` to avoid multicollinearity.
+- 🔹 **Encoding Categorical Variables** : Categorical columns (`PreferredLoginDevice`, `PreferredPaymentMode`, etc.): used **One-Hot Encoding** with `drop_first=True` to avoid multicollinearity.
 
 - 🔹 **Convert Boolean Columns**  
   - Converted `True/False` dummy variables to `0/1` integers for compatibility with ML algorithms.
@@ -172,6 +169,18 @@ print(duplicate)
 
 - 🔹 **Drop Unused Columns**  
   - Removed `CustomerID` since it's only an identifier and not informative for modeling
+
+```
+df_encoded = df.copy()
+onehot_cols = ['Gender','PreferredLoginDevice', 'PreferredPaymentMode', 'PreferedOrderCat', 'MaritalStatus']
+df_encoded = pd.get_dummies(df_encoded, columns=onehot_cols, drop_first=True)
+df_encoded.head()
+
+bool_cols = df_encoded.select_dtypes(include='bool').columns
+for col in bool_cols:
+    df_encoded[col] = df_encoded[col].astype(int)
+```
+<img src="https://drive.google.com/uc?export=view&id=1Gkf6AojbrJXr4RDQ0fx6YAs4HUu6yQVq" />
 
 ## 3️⃣ Churn Prediction – Supervised Learning
 
