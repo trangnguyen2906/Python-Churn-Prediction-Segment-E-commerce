@@ -450,7 +450,7 @@ fig, ax = plt.subplots(figsize=(6, 6))
 sns.boxplot(data=df, x='Churn',y='WarehouseToHome', showfliers = False)
 ```
 
-<img src="https://drive.google.com/uc?export=view&id=1_iKzMn10U-txv7vVoPhQxUDaZJqzD_1e" width="700"/>
+<img src="https://drive.google.com/uc?export=view&id=1_iKzMn10U-txv7vVoPhQxUDaZJqzD_1e" width="400"/>
 
 🔍 **Observations:**
 - There're **no strong evidences** show that there different between churn and not churn for warehousetohome → We should **exclude this feature** when apply model for not being bias.
@@ -462,7 +462,7 @@ fig, ax = plt.subplots(figsize=(6, 6))
 sns.boxplot(data=df, x='Churn',y='DaySinceLastOrder',ax=ax, showfliers = False)
 ```
 
-<img src="https://drive.google.com/uc?export=view&id=1WqRImb8tO-TJGXtv7FLPzn0KHb3GZDF9" width="700"/>
+<img src="https://drive.google.com/uc?export=view&id=1WqRImb8tO-TJGXtv7FLPzn0KHb3GZDF9" width="400"/>
 
 
 🔍 **Observations:**
@@ -474,7 +474,7 @@ fig, ax = plt.subplots(figsize=(6, 6))
 sns.boxplot(data=churn_df, x='Complain',y='DaySinceLastOrder',ax=ax, showfliers = False)
 ```
 
-<img src="https://drive.google.com/uc?export=view&id=1ldrp_Xje_sOSrKl9DJJMUNvkZet8V3BV" width="700"/>
+<img src="https://drive.google.com/uc?export=view&id=1ldrp_Xje_sOSrKl9DJJMUNvkZet8V3BV" width="400"/>
 
 For churned users with complain = 1, they had daysincelastorder higher than churn users with compain = 0
 
@@ -488,7 +488,7 @@ fig, ax = plt.subplots(figsize=(8, 5))
 sns.barplot(data=plot_df, x='Complain',y='%', ax=ax)
 ```
 
-<img src="https://drive.google.com/uc?export=view&id=1pVqArOUfJ0K9l4C0wZHJfAVua3Abv3Lo" width="590"/>
+<img src="https://drive.google.com/uc?export=view&id=1pVqArOUfJ0K9l4C0wZHJfAVua3Abv3Lo" width="400"/>
 
 📎 **CashbackAmount:** Verify whether receiving a **lower cashback value** is associated with a higher likelihood of churn.
 
@@ -497,7 +497,7 @@ fig, ax = plt.subplots(figsize=(6, 6))
 sns.boxplot(data=df, x='Churn',y='CashbackAmount',ax=ax, showfliers = False)
 ```
 
-<img src="https://drive.google.com/uc?export=view&id=1yKjuQ0_B8-xP3F9erZthpSh07PJtOSfX" width="590"/>
+<img src="https://drive.google.com/uc?export=view&id=1yKjuQ0_B8-xP3F9erZthpSh07PJtOSfX" width="400"/>
 
 
 ## 4️⃣ Churn Segmentation – Unsupervised Learning
