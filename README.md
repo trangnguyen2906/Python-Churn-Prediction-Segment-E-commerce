@@ -438,7 +438,45 @@ plt.show()
 <img src="https://drive.google.com/uc?export=view&id=1oTyfAVQ9YONap8lUixSHOYV2hKo9VsuF" width="700"/>
 
 🔍 **Observations:**
-abc
+
+- 💡 **New users (Tenure = 0 or 1)** make up the largest user group, but they also have the highest churn rates **(over 50%)**. This means that most users **leave the service very early**
+- 📉 After the initial stage **(Tenure ≥ 2)**, churn rates **drop sharply** and remain consistently **low**. This suggests that once users stay beyond the early phase, they tend to be more loyal and get more value from the service.
+- 🔢 The number of users declines as tenure increases, meaning it’s **challenging to retain users over the long term**. However, those who do **stay longer** show very **low churn rates**, indicating they are high-value users worth investing in.
+
+📎 **Warehouse to home:** Verify whether the **distance** between customer’s home and warehouse does affect the churn.
+
+```
+fig, ax = plt.subplots(figsize=(6, 6))
+sns.boxplot(data=df, x='Churn',y='WarehouseToHome', showfliers = False)
+```
+
+<img src="https://drive.google.com/uc?export=view&id=1_iKzMn10U-txv7vVoPhQxUDaZJqzD_1e" width="700"/>
+
+🔍 **Observations:**
+- There're **no strong evidences** show that there different between churn and not churn for warehousetohome → We should **exclude this feature** when apply model for not being bias.
+
+📎 **Days since last order:** Verify whether the **number of days since a customer’s last order** influences their likelihood to churn.
+
+```
+fig, ax = plt.subplots(figsize=(6, 6))
+sns.boxplot(data=df, x='Churn',y='DaySinceLastOrder',ax=ax, showfliers = False)
+```
+
+<img src="https://drive.google.com/uc?export=view&id=1WqRImb8tO-TJGXtv7FLPzn0KHb3GZDF9" width="700"/>
+
+
+🔍 **Observations:**
+From this chart, we see for churned users, they had orders recently (the day since last order less than not churned users) --> This quite strange, we should monitor more features for this insight (satisfaction_score, complain,..)
+
+```
+churn_df = df[df['Churn']==1]
+fig, ax = plt.subplots(figsize=(6, 6))
+sns.boxplot(data=churn_df, x='Complain',y='DaySinceLastOrder',ax=ax, showfliers = False)
+```
+
+<img src="https://drive.google.com/uc?export=view&id=1ldrp_Xje_sOSrKl9DJJMUNvkZet8V3BV" width="700"/>
+
+For churned users with complain = 1, they had daysincelastorder higher than churn users with compain = 0
 
 ## 4️⃣ Churn Segmentation – Unsupervised Learning
 
