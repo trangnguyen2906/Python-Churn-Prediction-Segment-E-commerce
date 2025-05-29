@@ -200,7 +200,7 @@ Applied `StandardScaler` to standardize features for better convergence and mode
     - Precision (Class 1): **0.71**, Recall: **0.52**, F1-score: **0.60**
 
 ```
-## Logistic Regression
+## Logistic Regression Model Training 
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 param_grid = {'C': [0.001, 0.01, 0.1, 1, 10]
               , 'penalty': ['l1', 'l2']
@@ -215,6 +215,7 @@ print("Best Cross-Validation Accuracy:", grid_search.best_score_)
 ```
 
 ```
+## Logistic Regression - Model Evaluation
 best_model = grid_search.best_estimator_
 log_y_pred_test = best_model.predict(X_test_scaled)
 log_y_pre_val = best_model.predict(X_val_scaled)
@@ -234,11 +235,93 @@ print(classification_report(y_test, log_y_pred_test))
     - Best `k = 2` with test accuracy: **0.924**, validation accuracy: **0.936**
     - Balanced precision/recall across classes
 
+```
+## KNN Model Training - Choosing n_neighbors - plot the accuracies 
+train_accuracies = {}
+test_accuracies = {}
+val_accuracies = {}
+neighbors = np.arange(1,26)
+for neighbor in neighbors:
+  knn = KNeighborsClassifier(n_neighbors = neighbor)
+  knn.fit(X_train_scaled, y_train)
+  train_accuracies[neighbor] = knn.score(X_train_scaled, y_train)
+  test_accuracies[neighbor] = knn.score(X_test_scaled, y_test)
+print(train_accuracies)
+print(test_accuracies)
+
+plt.figure(figsize=(8,6))
+plt.title("KNN: Varying of Neighbors")
+plt.plot(neighbors, train_accuracies.values(), label = "Training Accuracy")
+plt.plot(neighbors, test_accuracies.values(), label = "Testing Accuracy")
+
+plt.legend()
+plt.xlabel("Number of Neighbors")
+plt.ylabel("Accuracy")
+plt.show()
+```
+<img src="https://drive.google.com/uc?export=view&id=1vhXDThFMPJMT7hdtMtW8DRglWaW2WGun" width="700"/>
+
+```
+## KNN - Model Evaluation with k=2
+best_k = 2
+knn = KNeighborsClassifier(n_neighbors=best_k)
+knn.fit(X_train_scaled, y_train)
+knn_y_test_pred = knn.predict(X_test_scaled)
+knn_y_val_pred = knn.predict(X_val_scaled)
+knn_test_score = accuracy_score(y_test, knn_y_test_pred)
+knn_val_score = accuracy_score(y_val, knn_y_val_pred)
+print(f'Test Accuracy: {knn_test_score}')
+print(f'Validation Accuracy: {knn_val_score}')
+```
+
+```
+print(confusion_matrix(y_test, knn_y_test_pred))
+print(classification_report(y_test, knn_y_test_pred))
+```
+
 #### **🌲 Random Forest**
  - Tuned multiple hyperparameters: `n_estimators`, `max_depth`, `min_samples_leaf`, etc.
     - Best test accuracy: **0.953**, validation accuracy: **0.963**
     - F1-score (Class 1): **0.86**, Recall: **0.79**, Precision: **0.94**
     - Most balanced performance among all models
+
+```
+kf = KFold(n_splits=5, shuffle=True, random_state=42)
+
+param_grid = {
+    'n_estimators': [100,150],
+    'max_depth': [None, 10, 20],
+    'min_samples_split': [2, 5],
+    'min_samples_leaf': [1, 2],
+    'bootstrap': [True, False]
+}
+rdf = RandomForestClassifier()
+grid_search = GridSearchCV(rdf, param_grid, cv=kf, scoring='balanced_accuracy')
+
+# Fit the model
+grid_search.fit(X_train, y_train)
+
+# Print the best parameters
+print("Best Parameters: ", grid_search.best_params_)
+print("Best Cross-Validation Accuracy:", grid_search.best_score_)
+```
+
+```
+best_rdf= grid_search.best_estimator_
+rdf_y_pred_test = best_rdf.predict(X_test)
+rdf_y_pre_val = best_rdf.predict(X_val)
+print("Accuracy (Test):", accuracy_score(y_test, rdf_y_pred_test))
+print("Accuracy (Validation):", accuracy_score(y_val, rdf_y_pre_val))
+```
+
+```
+print(confusion_matrix(y_test, rdf_y_pred_test))
+print(classification_report(y_test, rdf_y_pred_test))
+print(confusion_matrix(y_val, rdf_y_pre_val))
+print(classification_report(y_val, rdf_y_pre_val))
+```
+<img src="https://drive.google.com/uc?export=view&id=1Ug3rhANnnGBo0ADoZeoCgzKrhdH4KlRE" width="700"/>
+
 
 🔍 **Summary**
 
