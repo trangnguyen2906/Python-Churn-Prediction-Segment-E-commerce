@@ -352,6 +352,57 @@ print(classification_report(y_val, rdf_y_pre_val))
 🌟 **Random Forest outperformed all other models** in both accuracy and class balance, and was chosen for churn prediction.
 
 ### 🔹Feature Importance (via Random Forest)
+Used feature importances from the trained Random Forest model to understand which variables most influence churn predictions.
+
+#### Finding the importance features 
+
+```
+clf = RandomForestClassifier()
+clf.fit(X_train, y_train)
+
+feats = {}
+for feature, importance in zip(X.columns, clf.feature_importances_):
+    feats[feature] = importance
+
+importances = pd.DataFrame.from_dict(feats, orient='index').rename(columns={0: 'Gini-importance'})
+importances = importances.sort_values(by='Gini-importance', ascending=True).reset_index()
+
+plt.figure(figsize=(8,8))
+plt.barh(importances['index'].tail(20), importances['Gini-importance'].tail(20))
+plt.title('Feature Importance (Random Forest)')
+plt.tight_layout()
+plt.show()
+```
+<img src="https://drive.google.com/uc?export=view&id=1k4rKJmCddAc7V3hJLn5sleXOuyCmJ1Tw" width="700"/>
+
+🔍 Observations:
+From the chart, we can see that there are **5 variables** that most influence the churn predition: `Tenure`, `CashbackAmount`, `WarehouseToHome`, `Complain`, `DaySinceLastOrder`
+
+#### Analyse features from initial Random Forest model
+In this part, from the previous observations, I will analyze and examine how these features affect the churn
+
+```
+def count_percentage(df, column, target):
+    ### This function to create the table calculate the percentage of churn/non-churn customer on total customer group by category values
+    
+
+    # Create 2 dataframes of churn and non-churn
+    churn = df[df[target]==1].groupby(column).size().reset_index(name='count').sort_values(ascending=False, by = 'count')
+    not_churn = df[df[target]==0].groupby(column).size().reset_index(name='count').sort_values(ascending=False, by = 'count')
+
+    #Merge 2 dataframe into one:
+    cate_df = churn.merge(not_churn, on = column , how = 'outer')
+    cate_df = cate_df.fillna(0)
+    # Rename columns to be more descriptive
+    cate_df.rename(columns = {'count_x':'churn','count_y':'not_churn'}, inplace = True)
+
+    #Caculate the percentage:
+    cate_df['%'] = cate_df['churn']/(cate_df['not_churn']+cate_df['not_churn'])
+    cate_df = cate_df.sort_values(by='%', ascending=False)
+
+    return cate_df
+    
+```
 
 
 ## 4️⃣ Churn Segmentation – Unsupervised Learning
