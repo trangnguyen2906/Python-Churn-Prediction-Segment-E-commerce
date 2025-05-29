@@ -351,10 +351,10 @@ print(classification_report(y_val, rdf_y_pre_val))
 
 🌟 **Random Forest outperformed all other models** in both accuracy and class balance, and was chosen for churn prediction.
 
-### 🔹Feature Importance (via Random Forest)
+### 🔹 Feature Importance (via Random Forest)
 Used feature importances from the trained Random Forest model to understand which variables most influence churn predictions.
 
-#### Finding the importance features 
+#### 📌 Finding the importance features 
 
 ```
 clf = RandomForestClassifier()
@@ -379,7 +379,7 @@ plt.show()
 
 From the chart, we can see that there are **5 variables** that most influence the churn predition: `Tenure`, `CashbackAmount`, `WarehouseToHome`, `Complain`, `DaySinceLastOrder`
 
-#### Analyse features from initial Random Forest model
+#### 📊 Analyse features from initial Random Forest model
 In this part, from the previous observations, I will analyze and examine how these features affect the churn
 
 ```
@@ -406,6 +406,39 @@ def count_percentage(df, column, target):
     
 ```
 
+📎 **Tenure:** Verify whether the **time/duration** that customer used the platform does affect the churn.
+
+```
+plot_df = count_percentage(df, 'Tenure', 'Churn')
+
+#Visualize the data:
+fig, ax = plt.subplots(figsize=(14, 5))
+sns.barplot(data=plot_df, x='Tenure',y='%', ax=ax)
+
+plt.title("Tenure vs Churn Percentage")
+plt.xlabel("Tenure")
+plt.ylabel("Churn Percentage")
+plt.show()
+```
+<img src="https://drive.google.com/uc?export=view&id=1b90HUuTcdjr0ui3q13V2CxixXPhdTS_F" width="700"/>
+
+
+```
+count_df = df.groupby('Tenure').size().reset_index(name='count')
+
+# Visualize the data:
+fig, ax = plt.subplots(figsize=(14, 5))
+sns.barplot(data=count_df, x='Tenure', y='count', ax=ax)
+
+plt.title("Tenure vs Number of Users")
+plt.xlabel("Tenure")
+plt.ylabel("Number of Users")
+plt.show()
+```
+<img src="https://drive.google.com/uc?export=view&id=1oTyfAVQ9YONap8lUixSHOYV2hKo9VsuF" width="700"/>
+
+🔍 **Observations:**
+abc
 
 ## 4️⃣ Churn Segmentation – Unsupervised Learning
 
