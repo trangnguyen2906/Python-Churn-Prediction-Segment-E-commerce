@@ -188,8 +188,26 @@ This section focuses on building classification models to predict whether a user
 ### 🔹 Split Dataset: Divide the data into training and test sets
 Divided the dataset into training (70%), validation (15%), and test (15%) sets using `train_test_split`.
 
+```
+X = df_encoded.drop(columns=['Churn'])
+y = df_encoded['Churn']
+
+X_train, X_temp, y_train, y_temp = train_test_split(X,y, test_size=0.3, random_state=42)
+X_test, X_val, y_test, y_val = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42)
+print(X_train.shape, X_test.shape, X_val.shape)
+
+(3941, 25) (844, 25) (845, 25)
+```
+
 ### 🔹 Normalize Features: Scale numerical values for better model performance
 Applied `StandardScaler` to standardize features for better convergence and model performance.
+
+```
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+X_val_scaled = scaler.transform(X_val)
+```
 
 ### 🔸 Models Training:
 
