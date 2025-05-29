@@ -375,7 +375,8 @@ plt.show()
 ```
 <img src="https://drive.google.com/uc?export=view&id=1k4rKJmCddAc7V3hJLn5sleXOuyCmJ1Tw" width="700"/>
 
-🔍 Observations:
+🔍 **Observations:**
+
 From the chart, we can see that there are **5 variables** that most influence the churn predition: `Tenure`, `CashbackAmount`, `WarehouseToHome`, `Complain`, `DaySinceLastOrder`
 
 #### Analyse features from initial Random Forest model
