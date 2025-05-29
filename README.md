@@ -199,6 +199,36 @@ Applied `StandardScaler` to standardize features for better convergence and mode
     - Test accuracy: **0.88**, Validation accuracy: **0.886**
     - Precision (Class 1): **0.71**, Recall: **0.52**, F1-score: **0.60**
 
+```
+## Logistic Regression
+kf = KFold(n_splits=5, shuffle=True, random_state=42)
+param_grid = {'C': [0.001, 0.01, 0.1, 1, 10]
+              , 'penalty': ['l1', 'l2']
+              , 'solver': ['liblinear','saga']}
+
+log_reg = LogisticRegression(max_iter=1000,)
+grid_search = GridSearchCV(log_reg, param_grid, cv=kf, scoring='balanced_accuracy')
+grid_search.fit(X_train_scaled, y_train)
+# Print the best parameters
+print("Best Parameters: ", grid_search.best_params_)
+print("Best Cross-Validation Accuracy:", grid_search.best_score_)
+```
+
+```
+best_model = grid_search.best_estimator_
+log_y_pred_test = best_model.predict(X_test_scaled)
+log_y_pre_val = best_model.predict(X_val_scaled)
+log_test_score = accuracy_score(y_test, log_y_pred_test)
+log_val_score = accuracy_score(y_val, log_y_pre_val)
+print(f'Balanced Accuracy Test: {log_test_score}')
+print(f'Balanced Accuracy Validation: {log_val_score}')
+```
+
+```
+print(confusion_matrix(y_test, log_y_pred_test))
+print(classification_report(y_test, log_y_pred_test))
+```
+
 #### **🧭 K-Nearest Neighbors (KNN)**
 - Explored multiple `k` values and visualized accuracy trend
     - Best `k = 2` with test accuracy: **0.924**, validation accuracy: **0.936**
