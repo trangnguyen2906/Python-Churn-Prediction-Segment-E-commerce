@@ -488,7 +488,7 @@ fig, ax = plt.subplots(figsize=(8, 5))
 sns.barplot(data=plot_df, x='Complain',y='%', ax=ax)
 ```
 
-<img src="https://drive.google.com/uc?export=view&id=1pVqArOUfJ0K9l4C0wZHJfAVua3Abv3Lo" width="700"/>
+<img src="https://drive.google.com/uc?export=view&id=1pVqArOUfJ0K9l4C0wZHJfAVua3Abv3Lo" width="590"/>
 
 📎 **CashbackAmount:** Verify whether receiving a **lower cashback value** is associated with a higher likelihood of churn.
 
@@ -497,7 +497,7 @@ fig, ax = plt.subplots(figsize=(6, 6))
 sns.boxplot(data=df, x='Churn',y='CashbackAmount',ax=ax, showfliers = False)
 ```
 
-<img src="https://drive.google.com/uc?export=view&id=1yKjuQ0_B8-xP3F9erZthpSh07PJtOSfX" width="700"/>
+<img src="https://drive.google.com/uc?export=view&id=1yKjuQ0_B8-xP3F9erZthpSh07PJtOSfX" width="590"/>
 
 
 ## 4️⃣ Churn Segmentation – Unsupervised Learning
