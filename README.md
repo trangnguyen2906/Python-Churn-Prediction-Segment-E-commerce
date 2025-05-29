@@ -383,7 +383,8 @@ In this part, from the previous observations, I will analyze and examine how the
 
 ```
 def count_percentage(df, column, target):
-    ### This function to create the table calculate the percentage of churn/non-churn customer on total customer group by category values
+    ### Function to create the table calculate the percentage
+    ### of churn/non-churn customer on total customer group by category values
     
 
     # Create 2 dataframes of churn and non-churn
@@ -393,7 +394,7 @@ def count_percentage(df, column, target):
     #Merge 2 dataframe into one:
     cate_df = churn.merge(not_churn, on = column , how = 'outer')
     cate_df = cate_df.fillna(0)
-    # Rename columns to be more descriptive
+    # Rename columns
     cate_df.rename(columns = {'count_x':'churn','count_y':'not_churn'}, inplace = True)
 
     #Caculate the percentage:
