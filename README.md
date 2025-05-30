@@ -576,8 +576,7 @@ df_churned[['CashbackAmount',
             'SatisfactionScore',
             'PreferedOrderCat_Grocery',
             'PreferedOrderCat_Laptop & Accessory',
-            'PreferedOrderCat_Mobile
-Phone']].groupby(df_churned['Cluster']).mean().round(2)
+            'PreferedOrderCat_MobilePhone']].groupby(df_churned['Cluster']).mean().round(2)
 ```
 
 **📈 Cluster Summary Table**
@@ -617,7 +616,9 @@ plt.show()
 
 ```
 
-![Preferred Order Category](https://drive.google.com/uc?id=13s-I5OhQ5Rac9S2oHRUsCMvVlr2mDA0N)
+<p align="center">
+  <img src="https://drive.google.com/uc?id=13s-I5OhQ5Rac9S2oHRUsCMvVlr2mDA0N" width="500"/>
+</p>
 
 - **Mobile Phone** is the dominant choice among churned users, especially in Clusters 1 and 2.
 
