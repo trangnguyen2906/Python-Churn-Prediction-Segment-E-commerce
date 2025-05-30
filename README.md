@@ -589,13 +589,13 @@ Phone']].groupby(df_churned['Cluster']).mean().round(2)
 |   2     | 153.24          | 4.13    | 0.63      | 3.52                | 0.03    | 0.04                | 0.78          |
 |   3     | 160.98          | 4.57    | 0.52      | 3.38                | 0.03    | 0.10                | 0.68          |
 
-🔍 Key Observations:
+🔍 **Key Observations:**
 - **Cluster 0**: Loyal users with longer tenure and high cashback, least likely to order via mobile; mostly interested in Laptop & Accessory products.
 - **Cluster 1**: Newer users with lowest tenure and cashback, fewer complaints, but heavily mobile-oriented with preference for Mobile Phone category.
 - **Cluster 2**: Moderate tenure and highest complaint rate, slightly more satisfied than others; strong mobile preference.
 - **Cluster 3**: Most satisfied users with the highest tenure and broader product interest; prefer mobile but also show interest in laptops.
 
-🔢 Preferred Category
+🔢 **Preferred Category**
 
 ```
 plt.figure(figsize=(6,6))
