@@ -476,6 +476,7 @@ sns.boxplot(data=churn_df, x='Complain',y='DaySinceLastOrder',ax=ax, showfliers 
 
 <img src="https://drive.google.com/uc?export=view&id=1ldrp_Xje_sOSrKl9DJJMUNvkZet8V3BV" width="400"/>
 
+🔍 **Observations:**
 For churned users with complain = 1, they had daysincelastorder higher than churn users with compain = 0
 
 📎 **Complain** Verify whether having **raised a complain** increases a customer's likelihood to churn.
@@ -490,6 +491,9 @@ sns.barplot(data=plot_df, x='Complain',y='%', ax=ax)
 
 <img src="https://drive.google.com/uc?export=view&id=1pVqArOUfJ0K9l4C0wZHJfAVua3Abv3Lo" width="400"/>
 
+🔍 **Observations:**
+Users who raised complaints show a **much higher churn rate**, indicating complaint resolution is crucial for retention.
+
 📎 **CashbackAmount:** Verify whether receiving a **lower cashback value** is associated with a higher likelihood of churn.
 
 ```
@@ -499,6 +503,8 @@ sns.boxplot(data=df, x='Churn',y='CashbackAmount',ax=ax, showfliers = False)
 
 <img src="https://drive.google.com/uc?export=view&id=1yKjuQ0_B8-xP3F9erZthpSh07PJtOSfX" width="400"/>
 
+🔍 **Observations:**
+Churned users tend to **receive less cashback**, suggesting that higher cashback may help improve retention.
 
 ## 4️⃣ Churn Segmentation – Unsupervised Learning
 
