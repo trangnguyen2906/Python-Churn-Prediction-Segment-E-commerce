@@ -20,7 +20,7 @@ A e-commerce company is facing a business challenge: user churn. Many customers 
 
 ### 📖 What is this project about? What Business Question will it solve?
 
-This project uses **Machine Learning** to help an e-commerce company proactively tackle customer churn and design better promotion strategies. 
+This project uses **Machine Learning** to help an e-commerce company proactively **tackle customer churn** and **design better promotion strategies.** 
 
 It focuses on answering three key business questions:
 
@@ -619,17 +619,43 @@ plt.show()
 
 ![Preferred Order Category](https://drive.google.com/uc?id=13s-I5OhQ5Rac9S2oHRUsCMvVlr2mDA0N)
 
-- Majority of churned users placed orders via **Mobile Phone**.
-- **Laptop & Accessory** is popular among high-tenure users (Cluster 0).
-- **Grocery** remains a niche preference across all segments.
+- **Mobile Phone** is the dominant choice among churned users, especially in Clusters 1 and 2.
+
+- **Laptop & Accessory** is highly preferred by **high-tenure users** in Cluster 0.
+
+- **Grocery** remains a **minor segment** across all clusters.
 
 ---
 
 ## 🔎 Final Conclusion & Recommendations  
 
-👉🏻 Based on the insights and findings above, we would recommend the [stakeholder team] to consider the following:  
+👉🏻 Based on the insights and findings above, we would recommend the stakeholder team to consider the following:  
 
-📌 Key Takeaways:  
-✔️ Recommendation 1  
-✔️ Recommendation 2  
-✔️ Recommendation 3
+📌 **Key Takeaways:**  
+- **Early churn is critical**: Most users churn within the first 1–2 months. Onboarding and early engagement are key to retention.
+
+- **Top churn drivers**: Short **tenure**, low **cashback**, and **complaints** are the strongest predictors of churn.
+
+- **Complaints triple churn risk**: Fast and effective complaint handling is essential.
+
+- **4 churn segments identified**:
+  - **Cluster 0**: Loyal, tech-focused (prefer laptops), high cashback
+  - **Cluster 1**: New, mobile-first, lowest cashback
+  - **Cluster 2**: Moderate tenure, highest complaints
+  - **Cluster 3**: Most satisfied, broad interests
+
+- **Mobile Phone orders dominate churned users**, but long-tenure users prefer **Laptop & Accessory**.
+
+✅ **Recommendations:**
+
+✔️ **Enhance Early Engagement:** Improve onboarding, offer early incentives, and personalize initial experiences.
+
+✔️ **Boost Cashback for Retention**: Strategically increase cashback offers for medium-tenure users to retain them.
+
+✔️ **Address Complaints Promptly**: Prioritize fast, empathetic complaint resolution processes.
+
+✔️ **Product Category Targeting**: Focus on high-churn segments who prefer Mobile Phones and Laptops. Deprioritize Grocery for churn prevention efforts.
+
+
+
+
