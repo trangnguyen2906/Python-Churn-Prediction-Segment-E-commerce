@@ -509,11 +509,119 @@ Churned users tend to **receive less cashback**, suggesting that higher cashback
 ## 4️⃣ Churn Segmentation – Unsupervised Learning
 
 ### 🔹 Dimension Reduction: Reduce features for efficient clustering
+- **Excluded `Churn` and `WarehouseToHome`** based on prior analysis (warehouse distance showed minimal correlation to churn).
+  
+- Applied `MinMaxScaler` to normalize all numerical features.
+  
+- Used **PCA** to reduce dimensionality to 3 components.
 
-### 🔸 K-Means Clustering
+-   **Explained variance ratio**: [0.1549, 0.1510, 0.1063] → ~41.2% of total variance explained.
+
+```
+df_churned = df_encoded[df_encoded['Churn'] == 1].copy()
+
+df_churned = df_churned.drop(columns=['Churn','WarehouseToHome'])
+df_churned.info()
+
+scaler = MinMaxScaler()
+scaled_data = scaler.fit_transform(df_churned)
+scaled_df = pd.DataFrame(scaled_data, columns=df_churned.columns)
+
+pca = PCA(n_components=3)
+X_pca = pca.fit_transform(scaled_data)
+pca_df = pd.DataFrame(data=X_pca, columns=['PC1', 'PC2', 'PC3'])
+
+explained_variance = pca.explained_variance_ratio_
+print(explained_variance)
+```
+
+### 🔸 K-Means Clustering + Evaluation
+
+- Applied the **Elbow Method** to determine the optimal number of clusters.
+- Selected **k = 4** clusters.
+- Performed clustering on the top 3 PCA components.
+- **Silhouette Score**: `0.4802` → indicates **moderate clustering structure**.
+
+```
+ks = range(1,11)
+inertias = []
+for k in ks:
+  model = KMeans(n_clusters=k, init='k-means++', random_state=42)
+  model.fit(pca_df)
+  inertias.append(model.inertia_)
+plt.plot(ks, inertias, '-o')
+plt.xlabel('number of clusters, k')
+plt.ylabel('inertia')
+plt.xticks(ks)
+plt.show()
+```
+
+```
+kmeans = KMeans(n_clusters=4, random_state=42)
+clusters = kmeans.fit_predict(pca_df[['PC1', 'PC2', 'PC3']])
+pca_df['Cluster'] = clusters
+df_churned['Cluster'] = clusters
+df_churned
+```
+
+![choose K](https://drive.google.com/uc?id=1dc5UjRhUiowP0SMV9kL7UMfHy6KzubjM)
+
 
 ### 🔹 Cluster Analysis:
 
+```
+df_churned[['CashbackAmount',
+            'Tenure',
+            'Complain',
+            'SatisfactionScore',
+            'PreferedOrderCat_Grocery',
+            'PreferedOrderCat_Laptop & Accessory',
+            'PreferedOrderCat_Mobile
+Phone']].groupby(df_churned['Cluster']).mean().round(2)
+```
+
+**📈 Cluster Summary Table**
+
+| Cluster | CashbackAmount | Tenure | Complain | SatisfactionScore | Grocery | Laptop & Accessory | Mobile Phone |
+|--------:|----------------:|--------:|----------:|--------------------:|--------:|--------------------:|--------------:|
+|   0     | 183.91          | 4.14    | 0.52      | 3.16                | 0.02    | 0.74                | 0.01          |
+|   1     | 140.32          | 2.02    | 0.46      | 3.51                | 0.00    | 0.02                | 0.96          |
+|   2     | 153.24          | 4.13    | 0.63      | 3.52                | 0.03    | 0.04                | 0.78          |
+|   3     | 160.98          | 4.57    | 0.52      | 3.38                | 0.03    | 0.10                | 0.68          |
+
+🔍 Key Observations:
+- **Cluster 0**: Loyal users with longer tenure and high cashback, least likely to order via mobile; mostly interested in Laptop & Accessory products.
+- **Cluster 1**: Newer users with lowest tenure and cashback, fewer complaints, but heavily mobile-oriented with preference for Mobile Phone category.
+- **Cluster 2**: Moderate tenure and highest complaint rate, slightly more satisfied than others; strong mobile preference.
+- **Cluster 3**: Most satisfied users with the highest tenure and broader product interest; prefer mobile but also show interest in laptops.
+
+🔢 Preferred Category
+
+```
+plt.figure(figsize=(6,6))
+
+sns.countplot(
+    data=df,
+    x="PreferedOrderCat",
+    hue=df_churned["Cluster"],
+    palette="Set2"
+)
+
+plt.title("Cluster's Profile Based On Preferred Order Category")
+plt.xlabel("Preferred Order Category")
+plt.ylabel("Customer Count")
+plt.legend(title="Cluster", bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+```
+
+![Preferred Order Category](https://drive.google.com/uc?id=13s-I5OhQ5Rac9S2oHRUsCMvVlr2mDA0N)
+
+- Majority of churned users placed orders via **Mobile Phone**.
+- **Laptop & Accessory** is popular among high-tenure users (Cluster 0).
+- **Grocery** remains a niche preference across all segments.
 
 ---
 
