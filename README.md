@@ -564,8 +564,9 @@ df_churned['Cluster'] = clusters
 df_churned
 ```
 
-![choose K](https://drive.google.com/uc?id=1dc5UjRhUiowP0SMV9kL7UMfHy6KzubjM)
-
+<p align="center">
+  <img src="https://drive.google.com/uc?id=1dc5UjRhUiowP0SMV9kL7UMfHy6KzubjM" width="500"/>
+</p>
 
 ### 🔹 Cluster Analysis:
 
