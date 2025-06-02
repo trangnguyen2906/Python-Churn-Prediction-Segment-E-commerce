@@ -96,7 +96,7 @@ It focuses on answering three key business questions:
 - 🔹 **Standardize Categorical Labels**  
   - Cleaned inconsistent category labels (e.g., mapping `'phone'` → `'Mobile Phone'`, `'COD'` → `'Cash on Delivery'`)
 
-```
+```python
 numeric_cols = df.select_dtypes(include=['int64', 'float']).columns
 categorical_cols = df.select_dtypes(exclude=['int64', 'float']).columns
 print(numeric_cols)
@@ -125,7 +125,7 @@ for col in categorical_cols:
 - 🔹 **Check for Duplicates**  
   Verified that there are **no duplicated rows** in the dataset using `df.duplicated().sum()`
 
-```
+```python
 ## Missing
 check_null = pd.DataFrame(df.isnull().sum().sort_values(ascending=False))
 check_null['%missing'] = check_null[0] / len(df) * 100
@@ -170,7 +170,7 @@ print(duplicate)
 - 🔹 **Drop Unused Columns**  
   - Removed `CustomerID` since it's only an identifier and not informative for modeling
 
-```
+```python
 df_encoded = df.copy()
 onehot_cols = ['Gender','PreferredLoginDevice', 'PreferredPaymentMode', 'PreferedOrderCat', 'MaritalStatus']
 df_encoded = pd.get_dummies(df_encoded, columns=onehot_cols, drop_first=True)
@@ -188,7 +188,7 @@ This section focuses on building classification models to predict whether a user
 ### 🔹 Split Dataset: Divide the data into training and test sets
 Divided the dataset into training (70%), validation (15%), and test (15%) sets using `train_test_split`.
 
-```
+```python
 X = df_encoded.drop(columns=['Churn'])
 y = df_encoded['Churn']
 
@@ -202,7 +202,7 @@ print(X_train.shape, X_test.shape, X_val.shape)
 ### 🔹 Normalize Features: Scale numerical values for better model performance
 Applied `StandardScaler` to standardize features for better convergence and model performance.
 
-```
+```python
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
@@ -217,7 +217,7 @@ X_val_scaled = scaler.transform(X_val)
     - Test accuracy: **0.88**, Validation accuracy: **0.886**
     - Precision (Class 1): **0.71**, Recall: **0.52**, F1-score: **0.60**
 
-```
+```python
 ## Logistic Regression Model Training 
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 param_grid = {'C': [0.001, 0.01, 0.1, 1, 10]
@@ -232,7 +232,7 @@ print("Best Parameters: ", grid_search.best_params_)
 print("Best Cross-Validation Accuracy:", grid_search.best_score_)
 ```
 
-```
+```python
 ## Logistic Regression - Model Evaluation
 best_model = grid_search.best_estimator_
 log_y_pred_test = best_model.predict(X_test_scaled)
@@ -243,7 +243,7 @@ print(f'Balanced Accuracy Test: {log_test_score}')
 print(f'Balanced Accuracy Validation: {log_val_score}')
 ```
 
-```
+```python
 print(confusion_matrix(y_test, log_y_pred_test))
 print(classification_report(y_test, log_y_pred_test))
 ```
@@ -253,7 +253,7 @@ print(classification_report(y_test, log_y_pred_test))
     - Best `k = 2` with test accuracy: **0.924**, validation accuracy: **0.936**
     - Balanced precision/recall across classes
 
-```
+```python
 ## KNN Model Training - Choosing n_neighbors - plot the accuracies 
 train_accuracies = {}
 test_accuracies = {}
@@ -279,7 +279,7 @@ plt.show()
 ```
 <img src="https://drive.google.com/uc?export=view&id=1vhXDThFMPJMT7hdtMtW8DRglWaW2WGun" width="700"/>
 
-```
+```python
 ## KNN - Model Evaluation with k=2
 best_k = 2
 knn = KNeighborsClassifier(n_neighbors=best_k)
@@ -292,7 +292,7 @@ print(f'Test Accuracy: {knn_test_score}')
 print(f'Validation Accuracy: {knn_val_score}')
 ```
 
-```
+```python
 print(confusion_matrix(y_test, knn_y_test_pred))
 print(classification_report(y_test, knn_y_test_pred))
 ```
@@ -303,7 +303,7 @@ print(classification_report(y_test, knn_y_test_pred))
     - F1-score (Class 1): **0.86**, Recall: **0.79**, Precision: **0.94**
     - Most balanced performance among all models
 
-```
+```python
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 
 param_grid = {
@@ -324,7 +324,7 @@ print("Best Parameters: ", grid_search.best_params_)
 print("Best Cross-Validation Accuracy:", grid_search.best_score_)
 ```
 
-```
+```python
 best_rdf= grid_search.best_estimator_
 rdf_y_pred_test = best_rdf.predict(X_test)
 rdf_y_pre_val = best_rdf.predict(X_val)
@@ -332,7 +332,7 @@ print("Accuracy (Test):", accuracy_score(y_test, rdf_y_pred_test))
 print("Accuracy (Validation):", accuracy_score(y_val, rdf_y_pre_val))
 ```
 
-```
+```python
 print(confusion_matrix(y_test, rdf_y_pred_test))
 print(classification_report(y_test, rdf_y_pred_test))
 print(confusion_matrix(y_val, rdf_y_pre_val))
@@ -356,7 +356,7 @@ Used feature importances from the trained Random Forest model to understand whic
 
 #### 📌 Finding the importance features 
 
-```
+```python
 clf = RandomForestClassifier()
 clf.fit(X_train, y_train)
 
@@ -382,7 +382,7 @@ From the chart, we can see that there are **5 variables** that most influence th
 #### 📊 Analyse features from initial Random Forest model
 In this part, from the previous observations, I will analyze and examine how these features affect the churn
 
-```
+```python
 def count_percentage(df, column, target):
     ### Function to create the table calculate the percentage
     ### of churn/non-churn customer on total customer group by category values
@@ -408,7 +408,7 @@ def count_percentage(df, column, target):
 
 📎 **Tenure:** Verify whether the **time/duration** that customer used the platform does affect the churn.
 
-```
+```python
 plot_df = count_percentage(df, 'Tenure', 'Churn')
 
 #Visualize the data:
@@ -423,7 +423,7 @@ plt.show()
 <img src="https://drive.google.com/uc?export=view&id=1b90HUuTcdjr0ui3q13V2CxixXPhdTS_F" width="700"/>
 
 
-```
+```python
 count_df = df.groupby('Tenure').size().reset_index(name='count')
 
 # Visualize the data:
@@ -445,7 +445,7 @@ plt.show()
 
 📎 **Warehouse to home:** Verify whether the **distance** between customer’s home and warehouse does affect the churn.
 
-```
+```python
 fig, ax = plt.subplots(figsize=(6, 6))
 sns.boxplot(data=df, x='Churn',y='WarehouseToHome', showfliers = False)
 ```
@@ -457,7 +457,7 @@ sns.boxplot(data=df, x='Churn',y='WarehouseToHome', showfliers = False)
 
 📎 **Days since last order:** Verify whether the **number of days since a customer’s last order** influences their likelihood to churn.
 
-```
+```python
 fig, ax = plt.subplots(figsize=(6, 6))
 sns.boxplot(data=df, x='Churn',y='DaySinceLastOrder',ax=ax, showfliers = False)
 ```
@@ -468,7 +468,7 @@ sns.boxplot(data=df, x='Churn',y='DaySinceLastOrder',ax=ax, showfliers = False)
 🔍 **Observations:**
 From this chart, we see for churned users, they had orders recently (the day since last order less than not churned users) --> This quite strange, we should monitor more features for this insight (satisfaction_score, complain,..)
 
-```
+```python
 churn_df = df[df['Churn']==1]
 fig, ax = plt.subplots(figsize=(6, 6))
 sns.boxplot(data=churn_df, x='Complain',y='DaySinceLastOrder',ax=ax, showfliers = False)
@@ -482,7 +482,7 @@ For churned users with complain = 1, they had daysincelastorder higher than chur
 📎 **Complain** Verify whether having **raised a complain** increases a customer's likelihood to churn.
 
 
-```
+```python
 plot_df = count_percentage(df, 'Complain', 'Churn')
 #Visualize the data:
 fig, ax = plt.subplots(figsize=(8, 5))
@@ -496,7 +496,7 @@ Users who raised complaints show a **much higher churn rate**, indicating compla
 
 📎 **CashbackAmount:** Verify whether receiving a **lower cashback value** is associated with a higher likelihood of churn.
 
-```
+```python
 fig, ax = plt.subplots(figsize=(6, 6))
 sns.boxplot(data=df, x='Churn',y='CashbackAmount',ax=ax, showfliers = False)
 ```
@@ -517,7 +517,7 @@ Churned users tend to **receive less cashback**, suggesting that higher cashback
 
 -   **Explained variance ratio**: [0.1549, 0.1510, 0.1063] → ~41.2% of total variance explained.
 
-```
+```python
 df_churned = df_encoded[df_encoded['Churn'] == 1].copy()
 
 df_churned = df_churned.drop(columns=['Churn','WarehouseToHome'])
@@ -542,7 +542,7 @@ print(explained_variance)
 - Performed clustering on the top 3 PCA components.
 - **Silhouette Score**: `0.4802` → indicates **moderate clustering structure**.
 
-```
+```python
 ks = range(1,11)
 inertias = []
 for k in ks:
@@ -556,7 +556,7 @@ plt.xticks(ks)
 plt.show()
 ```
 
-```
+```python
 kmeans = KMeans(n_clusters=4, random_state=42)
 clusters = kmeans.fit_predict(pca_df[['PC1', 'PC2', 'PC3']])
 pca_df['Cluster'] = clusters
@@ -570,7 +570,7 @@ df_churned
 
 ### 🔹 Cluster Analysis:
 
-```
+```python
 df_churned[['CashbackAmount',
             'Tenure',
             'Complain',
@@ -597,7 +597,7 @@ df_churned[['CashbackAmount',
 
 🔢 **Preferred Category**
 
-```
+```python
 plt.figure(figsize=(6,6))
 
 sns.countplot(
