@@ -13,7 +13,7 @@
 
 ### 📖 What is this project about? What Business Question will it solve?
 
-A e-commerce company is facing a business challenge: user churn. Many customers stop interacting with the platform after a short period, resulting in lost revenue and reduced customer lifetime value. However, the company currently lacks a systematic, data-driven approach to understand: 
+A e-commerce company is facing a business challenge: user churn. Many customers stop interacting with the platform after a short period, resulting in lost revenue and reduced customer lifetime value. 
 This project uses **Machine Learning** to help an e-commerce company proactively **tackle customer churn** and **design better promotion strategies.** 
 
 It focuses on answering three key business questions:
