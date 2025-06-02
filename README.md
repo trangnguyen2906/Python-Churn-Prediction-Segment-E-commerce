@@ -9,17 +9,11 @@
 
 ## 📌 Background & Overview  
 
-### 🧩 Project Context:
-A e-commerce company is facing a business challenge: user churn. Many customers stop interacting with the platform after a short period, resulting in lost revenue and reduced customer lifetime value. However, the company currently lacks a systematic, data-driven approach to understand: 
-
-- Why users churn
-- How to predict churn in advance
-- How to re-engage churned users effectively
-
 ### Objective:
 
 ### 📖 What is this project about? What Business Question will it solve?
 
+A e-commerce company is facing a business challenge: user churn. Many customers stop interacting with the platform after a short period, resulting in lost revenue and reduced customer lifetime value. However, the company currently lacks a systematic, data-driven approach to understand: 
 This project uses **Machine Learning** to help an e-commerce company proactively **tackle customer churn** and **design better promotion strategies.** 
 
 It focuses on answering three key business questions:
