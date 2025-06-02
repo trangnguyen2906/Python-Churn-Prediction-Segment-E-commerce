@@ -90,23 +90,6 @@ It focuses on answering three key business questions:
 - 🔹 **Standardize Categorical Labels**  
   - Cleaned inconsistent category labels (e.g., mapping `'phone'` → `'Mobile Phone'`, `'COD'` → `'Cash on Delivery'`)
 
-```python
-numeric_cols = df.select_dtypes(include=['int64', 'float']).columns
-categorical_cols = df.select_dtypes(exclude=['int64', 'float']).columns
-print(numeric_cols)
-print(categorical_cols)
-
-for col in categorical_cols:
-    unique_vals = df[col].unique()
-    print(f'Column: {col}, Unique Values: {unique_vals}')
-
-df['PreferredLoginDevice'] = df['PreferredLoginDevice'].replace({'Phone': 'Mobile Phone'})
-df['PreferredPaymentMode'] = df['PreferredPaymentMode'].replace({'COD': 'Cash on Delivery','CC': 'Credit Card'})
-df['PreferedOrderCat'] = df['PreferedOrderCat'].replace({'Mobile': 'Mobile Phone'})
-for col in categorical_cols:
-    unique_vals = df[col].unique()
-    print(f'Column: {col}, Unique Values: {unique_vals}')
-```
 <img src="https://drive.google.com/uc?export=view&id=17Jd7X3lE7M3mWC9-czqchDk5uDjV0mfE"/>
 
 - 🔹 **Check for Missing Values**  
@@ -119,36 +102,6 @@ for col in categorical_cols:
 - 🔹 **Check for Duplicates**  
   Verified that there are **no duplicated rows** in the dataset using `df.duplicated().sum()`
 
-```python
-## Missing
-check_null = pd.DataFrame(df.isnull().sum().sort_values(ascending=False))
-check_null['%missing'] = check_null[0] / len(df) * 100
-check_null.columns = ['count', '%missing']
-print(check_null)
-
-X = df.drop(columns=['Churn'])
-y = df['Churn']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-mean_cols = ['HourSpendOnApp']
-median_cols = df.columns[df.isna().sum()>0].drop('HourSpendOnApp')
-
-imp_mean = SimpleImputer(strategy='mean')
-X_train[mean_cols] = imp_mean.fit_transform(X_train[mean_cols])
-X_test[mean_cols] = imp_mean.transform(X_test[mean_cols])
-
-imp_median = SimpleImputer(strategy='median')
-X_train[median_cols] = imp_median.fit_transform(X_train[median_cols])
-X_test[median_cols] = imp_median.transform(X_test[median_cols])
-X_full_imputed = pd.concat([X_train, X_test]).sort_index()
-df.update(X_full_imputed[mean_cols + list(median_cols)])
-
-print(df.isnull().sum())
-
-## Duplicate
-duplicate = df.duplicated().sum()
-print(duplicate)
-```
 <img src="https://drive.google.com/uc?export=view&id=1U1wGPULAzrJ1h-VaTH58bm2R6HSuQta5"/>
 
 ## 2️⃣ Data Preprocessing
@@ -164,16 +117,6 @@ print(duplicate)
 - 🔹 **Drop Unused Columns**  
   - Removed `CustomerID` since it's only an identifier and not informative for modeling
 
-```python
-df_encoded = df.copy()
-onehot_cols = ['Gender','PreferredLoginDevice', 'PreferredPaymentMode', 'PreferedOrderCat', 'MaritalStatus']
-df_encoded = pd.get_dummies(df_encoded, columns=onehot_cols, drop_first=True)
-df_encoded.head()
-
-bool_cols = df_encoded.select_dtypes(include='bool').columns
-for col in bool_cols:
-    df_encoded[col] = df_encoded[col].astype(int)
-```
 <img src="https://drive.google.com/uc?export=view&id=1Gkf6AojbrJXr4RDQ0fx6YAs4HUu6yQVq" />
 
 ## 3️⃣ Churn Prediction – Supervised Learning
