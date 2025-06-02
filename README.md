@@ -117,8 +117,6 @@ It focuses on answering three key business questions:
 - 🔹 **Drop Unused Columns**  
   - Removed `CustomerID` since it's only an identifier and not informative for modeling
 
-<img src="https://drive.google.com/uc?export=view&id=1Gkf6AojbrJXr4RDQ0fx6YAs4HUu6yQVq" />
-
 ## 3️⃣ Churn Prediction – Supervised Learning
 This section focuses on building classification models to predict whether a user is likely to churn.
 
@@ -147,6 +145,16 @@ X_val_scaled = scaler.transform(X_val)
 ```
 
 ### 🔸 Models Training:
+
+🔍 **Summary**
+
+| Model              | Test Accuracy | Val Accuracy | Precision (Churn) | Recall (Churn) | F1 (Churn) |
+|-------------------|---------------|--------------|-------------------|----------------|------------|
+| Logistic Regression | 0.88          | 0.886        | 0.71              | 0.52           | 0.60       |
+| KNN (k=2)          | 0.924         | 0.936        | 0.92              | 0.62           | 0.74       |
+| Random Forest      | **0.953**     | **0.963**    | **0.94**          | **0.79**       | **0.86**   |
+
+🌟 **Random Forest outperformed all other models** in both accuracy and class balance, and was chosen for churn prediction.
 
 #### **🤖 Logistic Regression**
  - Tuned using GridSearchCV with `penalty`, `C`, and `solver`
@@ -277,16 +285,6 @@ print(classification_report(y_val, rdf_y_pre_val))
 ```
 <img src="https://drive.google.com/uc?export=view&id=1Ug3rhANnnGBo0ADoZeoCgzKrhdH4KlRE" width="700"/>
 
-
-🔍 **Summary**
-
-| Model              | Test Accuracy | Val Accuracy | Precision (Churn) | Recall (Churn) | F1 (Churn) |
-|-------------------|---------------|--------------|-------------------|----------------|------------|
-| Logistic Regression | 0.88          | 0.886        | 0.71              | 0.52           | 0.60       |
-| KNN (k=2)          | 0.924         | 0.936        | 0.92              | 0.62           | 0.74       |
-| Random Forest      | **0.953**     | **0.963**    | **0.94**          | **0.79**       | **0.86**   |
-
-🌟 **Random Forest outperformed all other models** in both accuracy and class balance, and was chosen for churn prediction.
 
 ### 🔹 Feature Importance (via Random Forest)
 Used feature importances from the trained Random Forest model to understand which variables most influence churn predictions.
