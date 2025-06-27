@@ -150,7 +150,6 @@ X_val_scaled = scaler.transform(X_val)
 
 ### 🔸 Models Training:
 
-#### 🔍 **Summary**
 
 🌟 **Random Forest outperformed all other models** in both accuracy and class balance, and was **chosen for churn prediction.**
 
@@ -201,7 +200,8 @@ print(classification_report(y_test, log_y_pred_test))
 ```
 </details>
 
-#### **🧭 K-Nearest Neighbors (KNN)**
+<details>
+<summary> 🧭 <strong>K-Nearest Neighbors (KNN)</strong></summary>
 - Explored multiple `k` values and visualized accuracy trend
     - Best `k = 2` with test accuracy: **0.924**, validation accuracy: **0.936**
     - Balanced precision/recall across classes
@@ -249,6 +249,7 @@ print(f'Validation Accuracy: {knn_val_score}')
 print(confusion_matrix(y_test, knn_y_test_pred))
 print(classification_report(y_test, knn_y_test_pred))
 ```
+</details>
 
 #### **🌲 Random Forest**
  - Tuned multiple hyperparameters: `n_estimators`, `max_depth`, `min_samples_leaf`, etc.
