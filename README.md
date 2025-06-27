@@ -161,7 +161,9 @@ X_val_scaled = scaler.transform(X_val)
 | Random Forest      | **0.953**     | **0.963**    | **0.94**          | **0.79**       | **0.86**   |
 
 
-#### **🤖 Logistic Regression**
+<details>
+<summary>🤖 <strong>Logistic Regression (Model Training & Evaluation)</strong></summary>
+ 
  - Tuned using GridSearchCV with `penalty`, `C`, and `solver`
     - Best cross-validation accuracy: **~0.756**
     - Test accuracy: **0.88**, Validation accuracy: **0.886**
@@ -197,6 +199,7 @@ print(f'Balanced Accuracy Validation: {log_val_score}')
 print(confusion_matrix(y_test, log_y_pred_test))
 print(classification_report(y_test, log_y_pred_test))
 ```
+</details>
 
 #### **🧭 K-Nearest Neighbors (KNN)**
 - Explored multiple `k` values and visualized accuracy trend
