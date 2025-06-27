@@ -588,30 +588,66 @@ plt.show()
 
 👉🏻 Based on the insights and findings above, we would recommend the stakeholder team to consider the following:  
 
-📌 **Key Takeaways:**  
-- **Early churn is critical**: Most users churn within the first 1–2 months. Onboarding and early engagement are key to retention.
+### 📌 Key Business Takeaways  
 
-- **Top churn drivers**: Short **tenure**, low **cashback**, and **complaints** are the strongest predictors of churn.
+- **Early Churn is a Major Risk:**  
+Over **50% of churn happens within the first 1–2 months** of customer tenure. This highlights an **urgent need for early-stage engagement, education, and value delivery** during the onboarding phase.
 
-- **Complaints triple churn risk**: Fast and effective complaint handling is essential.
+- **Top Churn Drivers Identified:**  
+The most influential churn predictors include:  
+  - **Short Tenure**  
+  - **Low Cashback Amount**  
+  - **Customer Complaints**  
+These drivers are statistically validated by the **Random Forest feature importance analysis** and **behavioral patterns** observed in the dataset.
 
-- **4 churn segments identified**:
-  - **Cluster 0**: Loyal, tech-focused (prefer laptops), high cashback
-  - **Cluster 1**: New, mobile-first, lowest cashback
-  - **Cluster 2**: Moderate tenure, highest complaints
-  - **Cluster 3**: Most satisfied, broad interests
+- **Complaint Triples Churn Risk:**  
+Users who raised complaints are **2–3 times more likely to churn** compared to those who didn’t. This signals a **service quality gap and the need for fast complaint resolution**.
 
-- **Mobile Phone orders dominate churned users**, but long-tenure users prefer **Laptop & Accessory**.
+- **Four Distinct Churn Segments (Based on Clustering):**  
 
-✅ **Recommendations:**
+| Cluster | Profile Summary |
+|-------- |---------------- |
+| **0** | Long-tenure, high cashback, laptop-focused, relatively loyal |
+| **1** | Short-tenure, low cashback, mobile-first, price-sensitive |
+| **2** | Moderate-tenure, high complaint rate, mobile-focused |
+| **3** | High satisfaction, longer-tenure, broad product interests |
 
-✔️ **Enhance Early Engagement:** Improve onboarding, offer early incentives, and personalize initial experiences.
+- **Product Category Influence:**  
+  - **Mobile Phone:** Dominates churned users (Clusters 1 & 2).  
+  - **Laptop & Accessory:** More popular among loyal users (Cluster 0).  
+  - **Grocery:** Minor contributor to churn → **Low priority for churn prevention efforts**.
 
-✔️ **Boost Cashback for Retention**: Strategically increase cashback offers for medium-tenure users to retain them.
 
-✔️ **Address Complaints Promptly**: Prioritize fast, empathetic complaint resolution processes.
+### ✅ Strategic Recommendations  
 
-✔️ **Product Category Targeting**: Focus on high-churn segments who prefer Mobile Phones and Laptops. Deprioritize Grocery for churn prevention efforts.
+1. **🛠️ Enhance Early Engagement & Onboarding:**  
+   - Launch **welcome campaigns** with **first-purchase incentives**, **guided tutorials**, or **early loyalty points**.  
+   - Use **in-app reminders** and **push notifications** to encourage **second and third purchases quickly**.
+
+2. **💰 Optimize Cashback Strategy:**  
+   - **Increase cashback offers** for **medium-tenure users (2–4 months)** to help **reduce mid-stage churn**.  
+   - Focus on **mobile-first users (Clusters 1 & 2)** with **small but targeted cashback deals** to retain price-sensitive users.
+
+3. **🤝 Strengthen Complaint Resolution Processes:**  
+   - Implement a **fast-response complaint management system** with **clear timelines**.  
+   - Introduce **"We value your feedback" compensation programs**, like **small vouchers** for complaint cases.  
+   - **Monitor complaint frequency** across customer segments and **proactively flag high-risk users**.
+
+4. **🎯 Launch Segment-Specific Marketing Campaigns:**  
+
+| Cluster | Recommended Action |
+|-------- |------------------- |
+| **Cluster 1 (New, Mobile Users)** | Focus on **onboarding flows**, **price-sensitive discounts**, and **mobile push notifications**. |
+| **Cluster 2 (High-Complaint Mobile Users)** | Prioritize **service recovery**, **personal outreach**, and **satisfaction follow-up campaigns**. |
+| **Cluster 0 (Loyal, Laptop Users)** | Roll out **loyalty rewards**, **cross-sell laptop accessories**, and **exclusive upgrade offers**. |
+| **Cluster 3 (Satisfied, Multi-Category Users)** | Launch **VIP programs**, offer **early access sales**, or **bundle deals across product categories**. |
+
+5. **📱 Address Mobile Category Churn:**  
+Given that churned users predominantly purchase **Mobile Phones**, launch **targeted retention campaigns**, such as:  
+   - **Mobile-focused limited-time offers**  
+   - **Device upgrade discounts**  
+   - **Mobile app engagement challenges**
+
 
 
 
