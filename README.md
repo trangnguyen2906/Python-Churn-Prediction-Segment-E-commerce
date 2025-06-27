@@ -7,7 +7,7 @@
    + [1️⃣ Data Cleaning](#1%EF%B8%8F⃣-data-cleaning)
    + [2️⃣ Data Preprocessing](#2%EF%B8%8F⃣-data-preprocessing)
    + [3️⃣ Churn Prediction – Supervised Learning](#3%EF%B8%8F⃣-churn-prediction--supervised-learning)
-   + [4️⃣ Churn Segmentation – Unsupervised Learning]()
+   + [4️⃣ Churn Segmentation – Unsupervised Learning](#4%EF%B8%8F⃣-churn-segmentation--unsupervised-learning)
 5. [🔎 Final Conclusion & Recommendations](#-final-conclusion--recommendations)
 
 ---
