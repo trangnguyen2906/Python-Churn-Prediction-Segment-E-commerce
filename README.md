@@ -4,7 +4,7 @@
 1. [📌 Background & Overview](#-background--overview)  
 2. [📂 Dataset Description & Data Structure](#-dataset-description--data-structure)
 3. [⚒️ Main Process](#%EF%B8%8F-main-process)
-   +
+   + [1️⃣ Data Cleaning](#1%EF%B8%8F⃣-data-cleaning)
    +
 5. [🔎 Final Conclusion & Recommendations](#-final-conclusion--recommendations)
 
