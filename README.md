@@ -1,5 +1,9 @@
 # 📊 Predict & Segment E-commerce Churned Users Using Python & Machine Learning
 
+<p align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1K5ov5RYw8yaQxlAvnIkZ5PaBkUqiK3Yk" alt="Project Banner">
+</p>
+
 ## 📑 Table of Contents  
 1. [📌 Background & Overview](#-background--overview)  
 2. [📂 Dataset Description & Data Structure](#-dataset-description--data-structure)
