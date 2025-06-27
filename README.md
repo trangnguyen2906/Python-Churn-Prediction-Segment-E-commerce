@@ -150,7 +150,7 @@ X_val_scaled = scaler.transform(X_val)
 
 ### 🔸 Models Training:
 
-🔍 **Summary**
+#### 🔍 **Summary**
 
 | Model              | Test Accuracy | Val Accuracy | Precision (Churn) | Recall (Churn) | F1 (Churn) |
 |-------------------|---------------|--------------|-------------------|----------------|------------|
