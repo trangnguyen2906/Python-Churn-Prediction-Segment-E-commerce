@@ -201,7 +201,8 @@ print(classification_report(y_test, log_y_pred_test))
 </details>
 
 <details>
-<summary> 🧭 <strong>K-Nearest Neighbors (KNN)</strong></summary>
+<summary> 🧭 <strong>K-Nearest Neighbors (KNN)(Model Training & Evaluation)</strong></summary>
+ 
 - Explored multiple `k` values and visualized accuracy trend
     - Best `k = 2` with test accuracy: **0.924**, validation accuracy: **0.936**
     - Balanced precision/recall across classes
@@ -251,7 +252,10 @@ print(classification_report(y_test, knn_y_test_pred))
 ```
 </details>
 
-#### **🌲 Random Forest**
+<details>
+<summary> 🌲 <strong>Random Forest (Model Training & Evaluation)</strong></summary>
+
+
  - Tuned multiple hyperparameters: `n_estimators`, `max_depth`, `min_samples_leaf`, etc.
     - Best test accuracy: **0.953**, validation accuracy: **0.963**
     - F1-score (Class 1): **0.86**, Recall: **0.79**, Precision: **0.94**
@@ -293,6 +297,8 @@ print(confusion_matrix(y_val, rdf_y_pre_val))
 print(classification_report(y_val, rdf_y_pre_val))
 ```
 <img src="https://drive.google.com/uc?export=view&id=1Ug3rhANnnGBo0ADoZeoCgzKrhdH4KlRE" width="700"/>
+
+</details>
 
 
 ### 🔹 Feature Importance (via Random Forest)
