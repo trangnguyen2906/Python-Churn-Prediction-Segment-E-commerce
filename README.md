@@ -152,13 +152,14 @@ X_val_scaled = scaler.transform(X_val)
 
 #### 🔍 **Summary**
 
+🌟 **Random Forest outperformed all other models** in both accuracy and class balance, and was **chosen for churn prediction.**
+
 | Model              | Test Accuracy | Val Accuracy | Precision (Churn) | Recall (Churn) | F1 (Churn) |
 |-------------------|---------------|--------------|-------------------|----------------|------------|
 | Logistic Regression | 0.88          | 0.886        | 0.71              | 0.52           | 0.60       |
 | KNN (k=2)          | 0.924         | 0.936        | 0.92              | 0.62           | 0.74       |
 | Random Forest      | **0.953**     | **0.963**    | **0.94**          | **0.79**       | **0.86**   |
 
-🌟 **Random Forest outperformed all other models** in both accuracy and class balance, and was chosen for churn prediction.
 
 #### **🤖 Logistic Regression**
  - Tuned using GridSearchCV with `penalty`, `C`, and `solver`
